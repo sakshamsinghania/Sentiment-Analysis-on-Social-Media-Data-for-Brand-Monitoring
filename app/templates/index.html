@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brand Sentiment Monitor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Brand Sentiment Analysis</h1>
+        <form method="POST">
+            <input type="text" name="brand" placeholder="🔍 Enter Brand Name (e.g., Nike)" required>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if results %}
+        <div class="summary">
+            <div class="card pos">😊 Positive: {{ summary['positive'] }}%</div>
+            <div class="card neu">😐 Neutral: {{ summary['neutral'] }}%</div>
+            <div class="card neg">😡 Negative: {{ summary['negative'] }}%</div>
+        </div>
+
+        <div class="table-container">
+            <h2>Results for "{{ brand }}"</h2>
+            <table>
+                <tr>
+                    <th>Tweet</th>
+                    <th>Predicted Sentiment</th>
+                </tr>
+                {% for text, label in results %}
+                <tr class="fade-in">
+                    <td>{{ text }}</td>
+                    <td class="{{ label }}">{{ label }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+    </div>
+
+    <footer>
+        <p>© 2025 Brand Sentiment Monitor • Designed by Bhole Chature 🚀</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+pandas
+numpy
+scikit-learn
+nltk
+snscrape
+vaderSentiment
+joblib
+streamlit
+matplotlib
+seaborn
+wordcloud
+transformers
+torch
+emoji
